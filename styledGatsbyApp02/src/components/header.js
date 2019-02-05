@@ -4,19 +4,19 @@ import React from "react";
 import styled from "styled-components";
 import devices from "../helpers/devices";
 
+//https://www.styled-components.com/docs/advanced#referring-to-other-components
 const NavBar = styled.div`
   position: fixed;
   width: 100%;
   padding: 50px 0;
   z-index: 100;
-  @media ${devices.mobileS} {
+  @media ${devices.mobileL} {
     padding: 15px 0;
+    ${NavBar} a:nth-child(4) {
+      display: none;
+    }
   }
 `;
-
-// .NavBar a:nth-child(4) {
-//   display: none;
-// }
 
 const NavBarGroup = styled.div`
   max-width: 800px;
@@ -25,8 +25,9 @@ const NavBarGroup = styled.div`
   grid-template-columns: repeat(5, auto);
   align-items: center;
   justify-items: center;
-  @media ${devices.mobileS} {
+  @media ${devices.mobileL} {
     grid-template-columns: repeat(4, auto);
+    }
   }
 `;
 
@@ -44,6 +45,9 @@ const NavBarButton = styled.button`
   border-radius: 10px;
   outline: none;
   cursor: pointer;
+  @media ${devices.mobileL} {
+    font-size: 16px;
+  }
 `;
 
 const Header = ({ siteTitle }) => (
