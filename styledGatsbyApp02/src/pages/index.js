@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Layout from "../components/layout";
 // import heroImage from "../images/wallpaper3.jpg";
 import devices from "../helpers/devices";
@@ -24,7 +24,19 @@ const HeroGroup = styled.div`
   text-align: center;
   padding: 150px 50px;
   @media ${devices.mobileL} {
-    padding: 100px 20px;
+    padding: 80px 20px;
+  }
+`;
+
+//https://www.styled-components.com/docs/basics#animations
+const HeroAnimation = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 `;
 
@@ -33,11 +45,17 @@ const HeroTitle = styled.h1`
   color: white;
   font-size: 60px;
   line-height: 1.2;
+  opacity: 0;
+  animation: ${HeroAnimation};
+  animation-duration: 3s;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
   @media ${devices.mobileL} {
-    font-size: 40px;
+    font-size: 36px;
   }
   @media ${devices.mobileS} {
-    font-size: 36px;
+    font-size: 28px;
   }
 `;
 
@@ -45,11 +63,13 @@ const HeroText = styled.p`
   font-size: 28px;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  animation: ${HeroAnimation} 3s 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   @media ${devices.mobileL} {
-    font-size: 22px;
+    font-size: 18px;
   }
   @media ${devices.mobileS} {
-    font-size: 18px;
+    font-size: 14px;
     margin: 10px 0 40px 0;
   }
 `;
@@ -64,6 +84,11 @@ const StyledLink = styled(Link)`
   padding: 9px 20px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: 20px;
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  & :hover {
+    background: white;
+    color: black;
+  }
 `;
 
 const IndexPage = () => (

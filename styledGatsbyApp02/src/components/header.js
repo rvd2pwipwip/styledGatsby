@@ -12,7 +12,7 @@ const NavBar = styled.div`
   z-index: 100;
   @media ${devices.mobileL} {
     padding: 15px 0;
-    ${NavBar} a:nth-child(4) {
+    & a:nth-child(4) {
       display: none;
     }
   }
@@ -25,6 +25,7 @@ const NavBarGroup = styled.div`
   grid-template-columns: repeat(5, auto);
   align-items: center;
   justify-items: center;
+
   @media ${devices.mobileL} {
     grid-template-columns: repeat(4, auto);
     }
@@ -34,6 +35,10 @@ const NavBarGroup = styled.div`
 const NavBarLink = styled(Link)`
   color: white;
   font-weight: 700;
+  @media ${devices.mobileS} {
+    font-size: 14px;
+    }
+  }
 `;
 
 const NavBarButton = styled.button`
@@ -45,6 +50,12 @@ const NavBarButton = styled.button`
   border-radius: 10px;
   outline: none;
   cursor: pointer;
+  transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  & :hover {
+    background: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px);
+  }
   @media ${devices.mobileL} {
     font-size: 16px;
   }
