@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import devices from "../helpers/devices";
 // import Image from "../components/image";
 import SEO from "../components/seo";
+import Card from "../components/Card";
 
 //https://github.com/facebook/create-react-app/issues/3238
 //require instead of import
@@ -108,6 +109,32 @@ const HeroSVG = styled.svg`
   left: 0;
 `;
 
+const Cards = styled.div``;
+
+const CardsSummary = styled.h2`
+  margin: 50px 20px;
+  font-size: 60px;
+  text-align: center;
+  font-weight: 700;
+  background: linear-gradient(104deg, #050a27 0%, #4a548c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const CardGroup = styled.div`
+  display: grid;
+  margin: 50px 40px 100px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 40px;
+  justify-items: center;
+  @media ${devices.laptop} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media ${devices.tablet} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
@@ -178,6 +205,31 @@ const IndexPage = () => (
         </HeroSVG>
       </HeroGroup>
     </Hero>
+    <Cards>
+      <CardsSummary>11 courses, more coming</CardsSummary>
+      <CardGroup>
+        <Card
+          title="Design System"
+          text="10 sections"
+          image={require("../images/wallpaper.jpg")}
+        />
+        <Card
+          title="React for Designers"
+          text="12 sections"
+          image={require("../images/wallpaper2.jpg")}
+        />
+        <Card
+          title="Sound Design"
+          text="5 sections"
+          image={require("../images/wallpaper3.jpg")}
+        />
+        <Card
+          title="ARKit 2"
+          text="10 sections"
+          image={require("../images/wallpaper4.jpg")}
+        />
+      </CardGroup>
+    </Cards>
   </Layout>
 );
 
