@@ -1,6 +1,6 @@
+import React, { Component } from "react";
 import { Link } from "gatsby";
 import PropTypes from "prop-types";
-import React from "react";
 import styled from "styled-components";
 import devices from "../helpers/devices";
 
@@ -10,6 +10,9 @@ const NavBar = styled.div`
   width: 100%;
   padding: 50px 0;
   z-index: 100;
+  & .Scrolled {
+    background: black;
+  }
   @media ${devices.mobileL} {
     padding: 15px 0;
     & a:nth-child(4) {
@@ -61,25 +64,46 @@ const NavBarButton = styled.button`
   }
 `;
 
-const Header = ({ siteTitle }) => (
-  <NavBar>
-    <NavBarGroup>
-      <NavBarLink to="/">
-        <img
-          src={require("../images/logo-designcode.svg")}
-          alt="Home"
-          width="30"
-        />
-      </NavBarLink>
-      <NavBarLink to="/courses">Courses</NavBarLink>
-      <NavBarLink to="/downloads">Downloads</NavBarLink>
-      <NavBarLink to="/workshops">Workshops</NavBarLink>
-      <NavBarLink to="/buy">
-        <NavBarButton>Buy</NavBarButton>
-      </NavBarLink>
-    </NavBarGroup>
-  </NavBar>
-);
+class Header extends Component {
+  state = {
+    hasScrolled: false
+  };
+
+  handleScroll = () => {
+    window.pageYOffset > 50
+      ? this.setState({ hasScrolled: true })
+      : this.setState({ hasScrolled: false });
+  };
+
+  componentDidMount() {
+    console.log("Mounted");
+    window.addEventListener("scroll", this.handleScroll);
+  }
+
+  render() {
+    return (
+      <NavBar className={this.state.hasScrolled ? "Scrolled" : ""}>
+        <NavBarGroup>
+          <NavBarLink to="/">
+            <img
+              src={require("../images/logo-designcode.svg")}
+              alt="Home"
+              width="30"
+            />
+          </NavBarLink>
+          <NavBarLink to="/courses">Courses</NavBarLink>
+          <NavBarLink to="/downloads">Downloads</NavBarLink>
+          <NavBarLink to="/workshops">Workshops</NavBarLink>
+          <NavBarLink to="/buy">
+            <NavBarButton>Buy</NavBarButton>
+          </NavBarLink>
+        </NavBarGroup>
+      </NavBar>
+    );
+  }
+}
+
+export default Header;
 
 Header.propTypes = {
   siteTitle: PropTypes.string
@@ -88,5 +112,3 @@ Header.propTypes = {
 Header.defaultProps = {
   siteTitle: ``
 };
-
-export default Header;

@@ -1,9 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "gatsby";
 import styled, { keyframes } from "styled-components";
 import Layout from "../components/layout";
 // import heroImage from "../images/wallpaper3.jpg";
 import devices from "../helpers/devices";
+import { getCourses } from "../helpers/courses";
 // import Image from "../components/image";
 import SEO from "../components/seo";
 import Card from "../components/Card";
@@ -113,12 +114,15 @@ const Cards = styled.div``;
 
 const CardsSummary = styled.h2`
   margin: 50px 20px;
-  font-size: 60px;
+  font-size: 48px;
   text-align: center;
   font-weight: 700;
   background: linear-gradient(104deg, #050a27 0%, #4a548c 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  @media ${devices.tablet} {
+    font-size: 32px;
+  }
 `;
 
 const CardGroup = styled.div`
@@ -135,102 +139,100 @@ const CardGroup = styled.div`
   }
 `;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <Hero>
-      <HeroGroup>
-        <HeroTitle>
-          Learn to <br /> design and code React apps
-        </HeroTitle>
-        <HeroText>
-          Complete courses about the best tools and design systems. Prototype
-          and build apps with React and Swift.
-        </HeroText>
-        {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-        <Image />
-        </div> */}
-        <StyledLink to="/page-2/">Watch the video</StyledLink>
-        <Logos>
-          <img
-            src={require("../images/logo-sketch.png")}
-            width="50"
-            alt="Sketch"
-          />
-          <img
-            src={require("../images/logo-figma.png")}
-            width="50"
-            alt="Figma"
-          />
-          <img
-            src={require("../images/logo-studio.png")}
-            width="50"
-            alt="Studio"
-          />
-          <img
-            src={require("../images/logo-framer.png")}
-            width="50"
-            alt="Framer"
-          />
-          <img
-            src={require("../images/logo-react.png")}
-            width="50"
-            alt="React"
-          />
-          <img
-            src={require("../images/logo-swift.png")}
-            width="50"
-            alt="Swift"
-          />
-        </Logos>
-        <HeroSVG
-          width="100%"
-          height="172"
-          // viewBox="0 0 2560 172"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path fill="white">
-            <animate
-              repeatCount="indefinite"
-              fill="freeze"
-              attributeName="d"
-              dur="10s"
-              values="M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z;
-            M0 87.1596C316 87.1597 444 160 884 52.0001C1324 -55.9999 1320.29 34.966 1538 71.251C1814 117.251 2156 189.252 2560 87.1597V233.161L0 233.161V87.1596Z;
-            M0 53.6584C158 11.0001 213 0 363 0C513 0 855.555 115.001 1154 115.001C1440 115.001 1626 -38.0004 2560 53.6585V199.66L0 199.66V53.6584Z;
-            M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z"
-            />
-          </path>
-        </HeroSVG>
-      </HeroGroup>
-    </Hero>
-    <Cards>
-      <CardsSummary>11 courses, more coming</CardsSummary>
-      <CardGroup>
-        <Card
-          title="Design System"
-          text="10 sections"
-          image={require("../images/wallpaper.jpg")}
-        />
-        <Card
-          title="React for Designers"
-          text="12 sections"
-          image={require("../images/wallpaper2.jpg")}
-        />
-        <Card
-          title="Sound Design"
-          text="5 sections"
-          image={require("../images/wallpaper3.jpg")}
-        />
-        <Card
-          title="ARKit 2"
-          text="10 sections"
-          image={require("../images/wallpaper4.jpg")}
-        />
-      </CardGroup>
-    </Cards>
-  </Layout>
-);
+class IndexPage extends Component {
+  state = { courses: [] };
+
+  componentDidMount() {
+    this.setState({ courses: getCourses() });
+  }
+
+  render() {
+    return (
+      <Layout>
+        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+        <Hero>
+          <HeroGroup>
+            <HeroTitle>
+              Learn to <br /> design and code React apps
+            </HeroTitle>
+            <HeroText>
+              Complete courses about the best tools and design systems.
+              Prototype and build apps with React and Swift.
+            </HeroText>
+            {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
+          <Image />
+          </div> */}
+            <StyledLink to="/page-2/">Watch the video</StyledLink>
+            <Logos>
+              <img
+                src={require("../images/logo-sketch.png")}
+                width="50"
+                alt="Sketch"
+              />
+              <img
+                src={require("../images/logo-figma.png")}
+                width="50"
+                alt="Figma"
+              />
+              <img
+                src={require("../images/logo-studio.png")}
+                width="50"
+                alt="Studio"
+              />
+              <img
+                src={require("../images/logo-framer.png")}
+                width="50"
+                alt="Framer"
+              />
+              <img
+                src={require("../images/logo-react.png")}
+                width="50"
+                alt="React"
+              />
+              <img
+                src={require("../images/logo-swift.png")}
+                width="50"
+                alt="Swift"
+              />
+            </Logos>
+            <HeroSVG
+              width="100%"
+              height="172"
+              // viewBox="0 0 2560 172"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path fill="white">
+                <animate
+                  repeatCount="indefinite"
+                  fill="freeze"
+                  attributeName="d"
+                  dur="10s"
+                  values="M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z;
+              M0 87.1596C316 87.1597 444 160 884 52.0001C1324 -55.9999 1320.29 34.966 1538 71.251C1814 117.251 2156 189.252 2560 87.1597V233.161L0 233.161V87.1596Z;
+              M0 53.6584C158 11.0001 213 0 363 0C513 0 855.555 115.001 1154 115.001C1440 115.001 1626 -38.0004 2560 53.6585V199.66L0 199.66V53.6584Z;
+              M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z"
+                />
+              </path>
+            </HeroSVG>
+          </HeroGroup>
+        </Hero>
+        <Cards>
+          <CardsSummary>11 courses, more coming</CardsSummary>
+          <CardGroup>
+            {this.state.courses.map(c => (
+              <Card
+                key={c.title}
+                title={c.title}
+                text={c.text}
+                image={require(`../images/${c.image}`)}
+              />
+            ))}
+          </CardGroup>
+        </Cards>
+      </Layout>
+    );
+  }
+}
 
 export default IndexPage;

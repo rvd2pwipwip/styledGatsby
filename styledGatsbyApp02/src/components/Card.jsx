@@ -23,6 +23,9 @@ const CardImage = styled.img`
   height: 110%;
   z-index: -1;
   transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  & :hover {
+    transform: translateY(-20px);
+  }
 `;
 
 const CardTitle = styled.h3`
