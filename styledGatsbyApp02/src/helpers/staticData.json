@@ -1,0 +1,48 @@
+{
+  "cells": [
+    {
+      "title": "Intro to React",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "Basic Styling in CSS",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "Adaptive Layout with CSS Grid",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "Interactions and Animations",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "SVG Animations",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "Components and Props",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "States and Events",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "Styled Components",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "Static Data with JSON",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "GraphQL with Contentful",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    },
+    {
+      "title": "Publish to Netlify",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+    }
+  ]
+}

@@ -10,8 +10,11 @@ const NavBar = styled.div`
   width: 100%;
   padding: 50px 0;
   z-index: 100;
-  & .Scrolled {
+  transition: 0.5s cubic-bezier(0.2, 0.8, 0.69, 1);
+  &.Scrolled {
     background: black;
+    padding: 15px 0;
+    /* backdrop-filter: blur(20px); only works in safari */
   }
   @media ${devices.mobileL} {
     padding: 15px 0;
@@ -54,7 +57,7 @@ const NavBarButton = styled.button`
   outline: none;
   cursor: pointer;
   transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-  & :hover {
+  &:hover {
     background: white;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
     transform: translateY(-3px);
@@ -76,7 +79,6 @@ class Header extends Component {
   };
 
   componentDidMount() {
-    console.log("Mounted");
     window.addEventListener("scroll", this.handleScroll);
   }
 

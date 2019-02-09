@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import { Link } from "gatsby";
 import styled, { keyframes } from "styled-components";
 import Layout from "../components/layout";
-// import heroImage from "../images/wallpaper3.jpg";
 import devices from "../helpers/devices";
+import staticData from "../helpers/staticData";
 import { getCourses } from "../helpers/courses";
-// import Image from "../components/image";
 import SEO from "../components/seo";
 import Card from "../components/Card";
+import Section from "../components/Section";
+import Wave from "../components/Wave";
+import Cell from "../components/Cell";
 
 //https://github.com/facebook/create-react-app/issues/3238
 //require instead of import
@@ -104,9 +106,10 @@ const Logos = styled.div`
   }
 `;
 
-const HeroSVG = styled.svg`
+const WaveBottom = styled.div`
   position: absolute;
-  bottom: 0;
+  width: 100%;
+  bottom: -6px;
   left: 0;
 `;
 
@@ -139,6 +142,26 @@ const CardGroup = styled.div`
   }
 `;
 
+const SectionCaption = styled.p`
+  color: #94a4ba;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-align: center;
+`;
+
+const SectionCellGroup = styled.div`
+  max-width: 800px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  @media ${devices.tablet} {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 20px;
+  }
+`;
+
 class IndexPage extends Component {
   state = { courses: [] };
 
@@ -159,9 +182,6 @@ class IndexPage extends Component {
               Complete courses about the best tools and design systems.
               Prototype and build apps with React and Swift.
             </HeroText>
-            {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-          <Image />
-          </div> */}
             <StyledLink to="/page-2/">Watch the video</StyledLink>
             <Logos>
               <img
@@ -195,26 +215,9 @@ class IndexPage extends Component {
                 alt="Swift"
               />
             </Logos>
-            <HeroSVG
-              width="100%"
-              height="172"
-              // viewBox="0 0 2560 172"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path fill="white">
-                <animate
-                  repeatCount="indefinite"
-                  fill="freeze"
-                  attributeName="d"
-                  dur="10s"
-                  values="M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z;
-              M0 87.1596C316 87.1597 444 160 884 52.0001C1324 -55.9999 1320.29 34.966 1538 71.251C1814 117.251 2156 189.252 2560 87.1597V233.161L0 233.161V87.1596Z;
-              M0 53.6584C158 11.0001 213 0 363 0C513 0 855.555 115.001 1154 115.001C1440 115.001 1626 -38.0004 2560 53.6585V199.66L0 199.66V53.6584Z;
-              M0 25.9086C277 84.5821 433 65.736 720 25.9086C934.818 -3.9019 1214.06 -5.23669 1442 8.06597C2079 45.2421 2208 63.5007 2560 25.9088V171.91L0 171.91V25.9086Z"
-                />
-              </path>
-            </HeroSVG>
+            <WaveBottom>
+              <Wave />
+            </WaveBottom>
           </HeroGroup>
         </Hero>
         <Cards>
@@ -230,6 +233,18 @@ class IndexPage extends Component {
             ))}
           </CardGroup>
         </Cards>
+        <Section
+          image={require("../images/wallpaper2.jpg")}
+          logo={require("../images/logo-react.png")}
+          title="React for Designers"
+          text="Learn how to build a modern site using React and the most efficient libraries to get your site/product online. Get familiar with components, CSS grid, animations, interactions, dynamic data with Contentful and deploying your site with Netlify."
+        />
+        <SectionCaption>12 sections - 6 hours</SectionCaption>
+        <SectionCellGroup>
+          {staticData.cells.map(c => (
+            <Cell key={c.title} image={c.image} title={c.title} />
+          ))}
+        </SectionCellGroup>
       </Layout>
     );
   }
