@@ -113,7 +113,10 @@ const WaveBottom = styled.div`
   left: 0;
 `;
 
-const Cards = styled.div``;
+const Cards = styled.div`
+  margin: 0 auto;
+  max-width: 1440px;
+`;
 
 const CardsSummary = styled.h2`
   margin: 50px 20px;
@@ -130,10 +133,14 @@ const CardsSummary = styled.h2`
 
 const CardGroup = styled.div`
   display: grid;
+
   margin: 50px 40px 100px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 40px;
   justify-items: center;
+  @media ${devices.laptopL} {
+    grid-template-columns: repeat(3, 1fr);
+  }
   @media ${devices.laptop} {
     grid-template-columns: repeat(2, 1fr);
   }
