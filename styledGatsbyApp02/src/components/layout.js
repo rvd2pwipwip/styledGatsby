@@ -14,6 +14,14 @@ const Layout = ({ children }) => (
             title
           }
         }
+        allContentfulLink {
+          edges {
+            node {
+              title
+              url
+            }
+          }
+        }
       }
     `}
     render={data => (
@@ -22,9 +30,12 @@ const Layout = ({ children }) => (
         <div>
           <main>{children}</main>
           <footer>
-            © {new Date().getFullYear()}, Built with
+            {/* © {new Date().getFullYear()}, Built with
             {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
+            <a href="https://www.gatsbyjs.org">Gatsby</a> */}
+            {data.allContentfulLink.edges.map(e => (
+              <a href={e.node.url}>{e.node.title}</a>
+            ))}
           </footer>
         </div>
       </>
