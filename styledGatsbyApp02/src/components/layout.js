@@ -15,11 +15,12 @@ const Layout = ({ children }) => (
             title
           }
         }
-        allContentfulLink {
+        allContentfulLink(sort: { fields: [createdAt], order: ASC }) {
           edges {
             node {
               title
               url
+              createdAt
             }
           }
         }
@@ -30,7 +31,12 @@ const Layout = ({ children }) => (
         <Header siteTitle={data.site.siteMetadata.title} />
         <div>
           <main>{children}</main>
-          <Footer data={data} />
+          <Footer data={data}>
+            Backgrounds made in Cinema 4D, iOS app in Swift, site in React.
+            <br />
+            <a href="mailto:support@designcode.io">Email us</a> to ask anything.
+            © 2019 - Terms of Service - Privacy Policy
+          </Footer>
         </div>
       </>
     )}
