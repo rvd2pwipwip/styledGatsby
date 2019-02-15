@@ -29,6 +29,7 @@ const Button = styled.button`
   &:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
     transform: translateY(-3px);
+    cursor: pointer;
   }
 `;
 const LinkGroup = styled.div`
@@ -56,10 +57,7 @@ const Copyright = styled.div`
 const Footer = ({ data, children }) => {
   return (
     <FooterGroup>
-      <Text>
-        Tweet "Prototype and build apps with React and Swift. New courses by
-        @MengTo"
-      </Text>
+      <Text>Tweet</Text>
       <Button>Tweet</Button>
       <LinkGroup>
         {data.allContentfulLink.edges.map(e => (
